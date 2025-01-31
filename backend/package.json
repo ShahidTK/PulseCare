@@ -1,11 +1,11 @@
 {
-  "name": "devjam1",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Project for DevJam event in MNNIT ",
+  "description": "DevJam project Backend side",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Shahid",
   "license": "ISC"
 }
