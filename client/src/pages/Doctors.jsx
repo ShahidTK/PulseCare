@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useParams } from 'react-router-dom'
+import { AppContext } from '../context/Appcontext'
 
 const Doctors = () => {
+
+  const {speciality} = useParams()
+
+  const {doctors} = useContext(AppContext);
+  
   return (
     <div>
-      <h1 className='text-primary'>Hello patients</h1>
+
     </div>
   )
 }
