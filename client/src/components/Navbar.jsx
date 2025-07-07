@@ -15,19 +15,19 @@ const Navbar = () => {
         <ul className='hidden md:flex items-start gap-5 font-medium'>
             <NavLink to = "/">
                 <li className='py-1'>HOME</li>
-                <hr className='border-none outline-none h-0.5 bg-[#5f6FFF] w-3/5 m-auto hidden'/>
+                <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
             </NavLink>
             <NavLink to = "/doctors">
                 <li className='py-1'>ALL DOCTORS</li>
-                <hr className='border-none outline-none h-0.5 bg-[#5f6FFF] w-3/5 m-auto hidden'/>
+                <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
             </NavLink>
             <NavLink to = "/about">
                 <li className='py-1'>ABOUT</li>
-                <hr className='border-none outline-none h-0.5 bg-[#5f6FFF] w-3/5 m-auto hidden'/>
+                <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
             </NavLink>
             <NavLink to = "/contact">
                 <li className='py-1'>CONTACT</li>
-                <hr className='border-none outline-none h-0.5 bg-[#5f6FFF] w-3/5 m-auto hidden'/>
+                <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
             </NavLink>
         </ul>
         <div className='flex items-center gap'>
@@ -44,10 +44,8 @@ const Navbar = () => {
                 </div>
             </div>
                 </div>
-                : <button onClick={()=> navigate("/login")} className='bg-[#5f6FFF] rounded-full px-8 py-3 font-light hidden md:block cursor-pointer'>CREATE ACCOUNT</button>
-            }
-            
-            
+                : <button onClick={()=> navigate("/login")} className='bg-primary rounded-full px-8 py-3 font-light hidden md:block cursor-pointer'>CREATE ACCOUNT</button>
+            }         
         </div>
     </div>
 

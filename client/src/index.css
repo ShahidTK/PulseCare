@@ -7,3 +7,8 @@
 ::-webkit-scrollbar{
     @apply hidden
 }
+
+@theme{
+    --color-primary: #5f6FFF;
+}
+
