@@ -16,3 +16,10 @@
     --color-primary: #5f6FFF;
 }
 
+@media (max-width: 740px) {
+    .active p {
+      background-color: theme('colors.primary'); /* Needs Tailwind config */
+      color: white;
+    }
+  }
+  
