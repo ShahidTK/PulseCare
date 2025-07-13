@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@100..900&family=Poppins:wght@500&display=swap');
+@import "tailwindcss";
+
+@theme{
+  --color-primary: #5f6FFF;
+}
+
+::-webkit-scrollbar{
+  @apply hidden
+}
+
+*{
+  font-family: 'Outfit';
+}

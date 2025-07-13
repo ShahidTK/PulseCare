@@ -2,6 +2,7 @@ import validator from "validator"
 import bcrypt, { hash } from "bcrypt"
 import cloudinary from "cloudinary"
 import doctorModel from "../models/doctor.model.js"
+import jwt from 'jsonwebtoken'
 // API for adding doctor 
 
 const addDoctor = async (req, res)=> {
@@ -11,11 +12,11 @@ const addDoctor = async (req, res)=> {
         const imageFile = req.file
 
         // checking for all data to add doctor
-        if(!name || !email || !password 
-            || !speciality || !degree || !experience || !about || !fees 
+        if(!name || !email || !password ||!speciality || !degree || !experience || !fees || !about
         ){
-            return res.json({success: false, message: "Missing details"})
+            return res.json({success: false, message: "Missing details1"})
         } 
+         
         
         if(!address){
             return res.json({success: false, message: "no address found"})
@@ -64,5 +65,35 @@ const addDoctor = async (req, res)=> {
     }
 }
 
+// API for admin login
 
-export {addDoctor}
+const loginAdmin = async  (req, res) =>{
+    try{
+        const {email, password} = req.body
+        if(email===process.env.ADMIN_EMAIL && password===process.env.ADMIN_PASSWORD){
+          const token = jwt.sign(email+password, process.env.JWT_SECRET)
+          res.json({success:true, token})
+            
+        } else {
+            res.json({success: false, message: "Invalid credentials"})
+        }
+
+    } catch(error){
+        console.log(error)
+        res.json({success:false, message:error.message})
+    }
+}
+
+// API to get all doctors list for admin panel
+
+const allDoctors = async (req, res)=> {
+    try{
+        const doctors = await doctorModel.find({}).select('-password')
+        res.json({success: true, doctors})
+    } catch(error){
+        console.log(error)
+        res.json({success: false, message: error.message});
+    }
+}
+
+export {addDoctor, loginAdmin , allDoctors}
