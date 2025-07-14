@@ -9,6 +9,7 @@ const AppContextProvider = (props) => {
 
     const currencySymbol = '$'
     const backendUrl = import.meta.env.VITE_BACKEND_URL 
+    const [userData,setUserData] = useState(false)
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem('token')? localStorage.getItem('token'): false)
     
@@ -31,13 +32,39 @@ const AppContextProvider = (props) => {
     useEffect(()=>{
         getDoctorsData()
     }, [])
-    const value = {
-        doctors, 
-        currencySymbol, 
-        getDoctorsData,
-        backendUrl,
-        token, setToken
+    
+    const loadUserData = async () => {
+        try{
+            const {data} = await axios.get(backendUrl + '/api/user/get-profile', {headers: {token}})
+            if(data.success){
+                setUserData(data.userData)
+            } else{
+                toast.error(data.message)
+            }
+            
+        } catch(error){
+            console.log(error)
+            toast.error(error.message)
+        }
     }
+    
+    useEffect(()=>{
+        if(token){
+            loadUserData();
+        } else{
+            setUserData(false)
+            }
+        }, [token])
+
+        const value = {
+            doctors, 
+            currencySymbol, 
+            getDoctorsData,
+            backendUrl,
+            token, setToken,
+            userData, setUserData,
+            loadUserData
+        }
 
     return (
         <AppContext.Provider value={value}>
