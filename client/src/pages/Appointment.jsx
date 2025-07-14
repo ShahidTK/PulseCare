@@ -88,7 +88,6 @@ const Appointment = () => {
 
             // add to array
             if(isSlotAvailable){
-              console.log(currentDate, formattedTime, slotDate, slotTime)
               timeSlots.push({
                 datetime: new Date(currentDate),
                 time : formattedTime

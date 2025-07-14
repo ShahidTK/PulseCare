@@ -22,7 +22,6 @@ const AppContextProvider = (props) => {
             else{
                 toast.error(data.message)
             }
-            console.log(data.doctors)
         } catch(error){
             console.log(error)
             toast.error(error.message)
