@@ -3,25 +3,36 @@ import {assets} from '../assets/assets.js'
 import { AdminContext } from '../context/AdminContext.jsx'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { DoctorContext } from '../context/DoctorContext.jsx'
 const Login = () => {
 
     const [state, setState] = useState('Admin')
     const {setAToken, backendUrl} = useContext(AdminContext)
+    const {setDToken, dToken} = useContext(DoctorContext)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const onSubmitHandler = async (event) => {
         event.preventDefault()
         try{
           if(state==='Admin'){
-            const res = await axios.post(backendUrl + '/api/admin/login', {email, password}) 
-            if(res.data.success){
-                console.log(res.data.token)
-                setAToken(res.data.token);
-                localStorage.setItem('aToken', res.data.token)  
+            const {data} = await axios.post(backendUrl + '/api/admin/login', {email, password}) 
+            if(data.success){
+                setAToken(data.token);
+                localStorage.setItem('aToken', data.token)  
             }  else {
-                toast.error(res.data.message)
+                toast.error(data.message)
             }
-          } 
+            // doctor login
+          } else{
+            const {data} = await axios.post(backendUrl + '/api/doctor/login', {email, password}) 
+            if(data.success){
+                console.log(data.token)
+                setDToken(data.token);
+                localStorage.setItem('dToken', data.token)  
+            }  else {
+                toast.error(data.message)
+            }
+          }
         } catch(error){
           console.log(error.message)
         }
