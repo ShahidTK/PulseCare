@@ -8,11 +8,11 @@
 
 - 👤 Role-based login (Patient, Doctor, Admin)
 - 🕒 Real-time appointment slot booking
-- 💳 Payment gateway integration (Stripe)
+- 💳 Payment gateway integration (Razorpay)
 - 🔐 JWT-based authentication and authorization
 - 🧾 Booking and transaction history
 - 🛠️ Admin dashboard for user and doctor management
-- 🔍 Filter doctors by specialization, location, or availability
+- 🔍 Filter doctors by specialization
 
 ---
 
@@ -22,7 +22,7 @@
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB (Mongoose)
 - **Authentication:** JWT, bcrypt
-- **Payments:** Stripe API
+- **Payments:** razorpay API
 
 ---
 
