@@ -85,6 +85,19 @@ const loginAdmin = async  (req, res) =>{
     }
 }
 
+
+const changeAvailability = async (req, res) => {
+    try{
+        const {docId} = req.body
+        const docData = await doctorModel.findById(docId)
+        await doctorModel.findByIdAndUpdate(docId, {available: !docData.available})
+        res.json({success: true, message: 'Availability Changed'})
+    } catch(error){
+        console.log(error)
+        res.json({success: false, message: error.message})
+    }
+}
+
 // API to get all doctors list for admin panel
 const allDoctors = async (req, res)=> {
     try{
@@ -157,4 +170,4 @@ const adminDashboard = async (req, res) => {
     }
 }
 
-export {addDoctor, loginAdmin , allDoctors, appointmentsAdmin,appointmentCancel , adminDashboard}
+export {addDoctor, loginAdmin , allDoctors, appointmentsAdmin,appointmentCancel , adminDashboard, changeAvailability}
