@@ -8,7 +8,7 @@ const Footer = () => {
 
         {/* left section */}
       <div >
-          <p className='mb-5 cursor-pointer text-blue-800 text-2xl font-bold'>PulseCare</p>
+          <p className='mb-5 cursor-pointer text-blue-700 text-2xl font-bold'>PulseCare</p>
          <p className='w-full md:w-2/3 text-gray-600 leading-6'>Book appointments easily with trusted doctors and get quality care at your convenience. Stay connected with us for better healthcare services anytime, anywhere.</p>
       </div>
       
