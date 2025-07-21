@@ -13,7 +13,7 @@
 }
 
 @theme{
-    --color-primary: #5f6FFF;
+    --color-primary: #007BFF;
 }
 
 @media (max-width: 740px) {

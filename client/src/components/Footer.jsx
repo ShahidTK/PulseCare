@@ -8,8 +8,8 @@ const Footer = () => {
 
         {/* left section */}
       <div >
-         <img className='mb-5 w-40' src={assets.logo} alt="" />
-         <p className='w-full md:w-2/3 text-gray-600 leading-6'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem, numquam voluptatibus aut perspiciatis magni placeat.</p>
+          <p className='mb-5 cursor-pointer text-blue-800 text-2xl font-bold'>PulseCare</p>
+         <p className='w-full md:w-2/3 text-gray-600 leading-6'>Book appointments easily with trusted doctors and get quality care at your convenience. Stay connected with us for better healthcare services anytime, anywhere.</p>
       </div>
       
       {/* middle section */}

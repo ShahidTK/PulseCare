@@ -8,7 +8,7 @@ const TopDoctors = () => {
   return (
     <div className='flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10'>
       <h1 className='text-3xl font-medium'>Top Doctors to Book</h1>
-      <p className='sm:w-1/3 text-center text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, esse!</p>
+      <p className='sm:w-1/3 text-center text-sm'>Meet our highly trusted and experienced doctors, ready to provide the best care for you and your family.</p>
       <div  className='w-full grid  gap-4 pt-5 gap-y-6 px-3 sm:px-0'  style={{ gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))" }}>
         {doctors.slice(0, 10).map((item)=>(
             <div onClick={()=> {navigate(`/appointment/${item._id}`); scrollTo(0, 0)}} className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-3 transform transition duration-500'>

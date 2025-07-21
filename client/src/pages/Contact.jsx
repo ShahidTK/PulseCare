@@ -13,7 +13,7 @@ const Contact = () => {
 
         <div className='flex flex-col justify-center items-start gap-6'>
           <p className='font-semibold text-lg text-gray-600'>Our Office</p>
-          <p className='text-gray-500'>Lorem ipsum dolor sit amet. <br />Lorem, ipsum dolor, Washington, USA</p>
+          <p className='text-gray-500'>Naini Square, Indore<br /> Madhya Pradesh, India</p>
           <p className='text-gray-500'>Tel: 135-355-334-2 <br /> Email : pulsecare@gmail.com</p>
           <p className='font-semibold text-lg text-gray-600'>Careers at PulseCare</p>
           <p className='text-gray-500'>Learn more about our teams and job openings</p>
