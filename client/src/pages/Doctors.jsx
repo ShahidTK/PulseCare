@@ -5,17 +5,22 @@ import { AppContext } from '../context/Appcontext'
 const Doctors = () => {
 
   const {speciality} = useParams()
+  const [searchTerm, setSearchTerm] = useState('');
   const [showFilter, setShowFilter] = useState(false)
   const [filterDoc, setFilterDoc] = useState([]);
   const navigate = useNavigate()
   const {doctors} = useContext(AppContext);
   
   const applyFilter = ()=>{
+    let tempDocs = doctors;
     if(speciality){
-      setFilterDoc(doctors.filter(doc=> doc.speciality===speciality))
-    } else{
-      setFilterDoc(doctors)
+      tempDocs = tempDocs.filter(doc=> doc.speciality===speciality);  
+    } 
+
+    if(searchTerm){
+      tempDocs = tempDocs.filter(doc=> doc.name.toLowerCase().includes(searchTerm.toLowerCase()));
     }
+    setFilterDoc(tempDocs);
   }
 
   useEffect(()=>{
@@ -24,14 +29,18 @@ const Doctors = () => {
 
   return (
     <div>
-        <p className='text-gray-600'>Browse through the doctors specialist.</p>
 
+
+        <p className='text-gray-600'>Browse through the doctors specialist.</p>
+        <input type="text" className='p-2 border black w-full max-w-3xl' placeholder='Search doctor name...' value={searchTerm} onChange={(e)=> setSearchTerm(e.target.value)}/>
+        <button className='bg-primary px-3 py-2 text-white mx-5 rounded-xl hover:bg-blue text-sm cursor-pointer' onClick={()=> applyFilter()}>Search</button>
         <div className='flex flex-col sm:flex-row items-start gap-5 mt-5'>
           <button className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${showFilter? 'bg-primary text-white': ''}`} onClick={()=> setShowFilter(prev => !prev)}>Filters</button>
+          
           <div className={`flex flex-col gap-4 text-sm text-gray-600 ${showFilter? 'flex': 'hidden sm:flex'}`}>
             <p onClick={()=> speciality==='General physician' ? navigate('/doctors'): navigate('/doctors/General physician')} className={`cursor-pointer w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all ${speciality==="General physician" ? "bg-indigo-100 text-black" : ""}`}>General physician</p>
             <p onClick={()=> speciality==='Gynecologist' ? navigate('/doctors'): navigate('/doctors/Gynecologist')} className={`cursor-pointer w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all ${speciality==="Gynecologist" ? "bg-indigo-100 text-black" : ""}`}>Gynecologist</p>
-            <p onClick={()=> speciality==='Dermatologist' ? navigate('/doctors'): navigate('/doctors/Dermatologist')} className={`cursor-pointer w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all ${speciality==="Dermatologist" ? "bg- text-black" : ""}`}>Dermatologist</p>
+            <p onClick={()=> speciality==='Dermatologist' ? navigate('/doctors'): navigate('/doctors/Dermatologist')} className={`cursor-pointer w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all ${speciality==="Dermatologist" ? "bg-indigo-100 text-black" : ""}`}>Dermatologist</p>
             <p onClick={()=> speciality==='Pediatricians' ? navigate('/doctors'): navigate('/doctors/Pediatricians')} className={`cursor-pointer w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all ${speciality==="Pediatricians" ? "bg-indigo-100 text-black" : ""}`}>Pediatricians</p>
             <p onClick={()=> speciality==='Neurologist' ? navigate('/doctors'): navigate('/doctors/Neurologist')} className={`cursor-pointer w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all ${speciality==="Neurologist" ? "bg-indigo-100 text-black" : ""}`}>Neurologist</p>
             <p onClick={()=> speciality==='Gastroenterologist' ? navigate('/doctors'): navigate('/doctors/Gastroenterologist')} className={`cursor-pointer w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all ${speciality==="Gastroenterologist" ? "bg-indigo-100 text-black" : ""}`}>Gastroenterologist</p>
