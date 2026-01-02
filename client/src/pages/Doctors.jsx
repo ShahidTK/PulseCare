@@ -33,7 +33,7 @@ const Doctors = () => {
 
         <p className='text-gray-600'>Browse through the doctors specialist.</p>
         <input type="text" className='p-2 border black w-full max-w-3xl' placeholder='Search doctor name...' value={searchTerm} onChange={(e)=> setSearchTerm(e.target.value)}/>
-        <button className='bg-primary px-3 py-2 text-white mx-5 rounded-xl hover:bg-blue text-sm cursor-pointer' onClick={()=> applyFilter()}>Search</button>
+        <button className='bg-primary px-3 py-2 text-white mx-5 rounded-xl hover:bg-blue text-sm cursor-pointer transition-all duration-300 hover:bg-blue-700 hover:text-white' onClick={()=> applyFilter()}>Search</button>
         <div className='flex flex-col sm:flex-row items-start gap-5 mt-5'>
           <button className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${showFilter? 'bg-primary text-white': ''}`} onClick={()=> setShowFilter(prev => !prev)}>Filters</button>
           
