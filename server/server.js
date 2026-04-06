@@ -16,7 +16,7 @@ connectCloudinary()
 
 app.use(express.json())
 app.use(cors({
-    origin: "https://your-frontend.vercel.app",
+    origin: "https://pulse-care-ten.vercel.app/",
     credentials: true
   }));
 // api endpoints
